@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { calculateInvestmentResults, formatter } from "./util/investment";
 import Header from "./components/Header";
+import UserInput from "./components/UserInput";
 
 //const INITIAL_INVESTMENTS = [0, 0, 0, 0];
 /*
@@ -11,6 +12,7 @@ import Header from "./components/Header";
 */
 
 function App() {
+    /*
     const [initialInvestment, setInitialInvestment] = useState(0);
     const [annualInvestment, setAnnualInvestment] = useState(0);
     const [expectedReturn, setExpectedReturn] = useState(0);
@@ -78,9 +80,12 @@ function App() {
             })
         );
     }
-
+*/
     return (
-        <Header />
+        <>
+            <Header />
+            <UserInput />
+        </>
         /*
         <div id="header">
             <img src="investment-calculator-logo.png" />
