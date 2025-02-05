@@ -12,8 +12,6 @@ const initialGameBoard = [
     [null, null, null],
 ];
 
-let winner = null;
-
 function deriveActivePlayer(gameTurns) {
     let currentPlayer = "X";
 
@@ -30,13 +28,15 @@ function App() {
 
     const activePlayer = deriveActivePlayer(gameTurns);
 
-    let gameBoard = initialGameBoard;
+    let gameBoard = [...initialGameBoard.map((array) => [...array])];
 
     for (let turn of gameTurns) {
         const { square, player } = turn;
         const { row, col } = square;
         gameBoard[row][col] = player;
     }
+
+    let winner = null;
 
     for (const combination of WINNING_COMBINATIONS) {
         //console.log(combination[0]);
@@ -75,6 +75,10 @@ function App() {
         });
     }
 
+    function handleRestart() {
+        setGameTurns([]);
+    }
+
     return (
         <main>
             <div id="game-container">
@@ -90,7 +94,12 @@ function App() {
                         isActive={activePlayer === "O"}
                     />
                 </ol>
-                {(winner || hasDraw) && <GameOver winner={winner}></GameOver>}
+                {(winner || hasDraw) && (
+                    <GameOver
+                        winner={winner}
+                        onRestart={handleRestart}
+                    ></GameOver>
+                )}
                 <GameBoard
                     board={gameBoard}
                     onSelectSquare={handleSelectSquare}
