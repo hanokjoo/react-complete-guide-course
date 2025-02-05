@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { calculateInvestmentResults, formatter } from "./util/investment";
+import Header from "./components/Header";
 
 //const INITIAL_INVESTMENTS = [0, 0, 0, 0];
 /*
@@ -79,6 +80,8 @@ function App() {
     }
 
     return (
+        <Header />
+        /*
         <div id="header">
             <img src="investment-calculator-logo.png" />
             <h1>React Investment Calculator</h1>
@@ -151,6 +154,7 @@ function App() {
                 </tbody>
             </table>
         </div>
+        */
     );
 }
 
