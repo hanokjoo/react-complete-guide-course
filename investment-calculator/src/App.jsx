@@ -2,6 +2,7 @@ import { useState } from "react";
 import { calculateInvestmentResults, formatter } from "./util/investment";
 import Header from "./components/Header";
 import UserInput from "./components/UserInput";
+import Results from "./components/Results";
 
 //const INITIAL_INVESTMENTS = [0, 0, 0, 0];
 /*
@@ -12,6 +13,21 @@ import UserInput from "./components/UserInput";
 */
 
 function App() {
+    const [userInput, setUserInput] = useState({
+        initialInvestment: 10000,
+        annualInvestment: 1200,
+        expectedReturn: 6,
+        duration: 10,
+    });
+
+    function handleChange(inputIdentifier, newValue) {
+        setUserInput((prevUserInput) => {
+            return {
+                ...prevUserInput,
+                [inputIdentifier]: newValue,
+            };
+        });
+    }
     /*
     const [initialInvestment, setInitialInvestment] = useState(0);
     const [annualInvestment, setAnnualInvestment] = useState(0);
@@ -84,7 +100,8 @@ function App() {
     return (
         <>
             <Header />
-            <UserInput />
+            <UserInput userInput={userInput} onChange={handleChange} />
+            <Results input={userInput} />
         </>
         /*
         <div id="header">
