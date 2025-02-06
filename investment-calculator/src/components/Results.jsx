@@ -1,4 +1,7 @@
+import { calculateInvestmentResults } from "../util/investment";
+
 export default function Results({ input }) {
-    console.log(input);
+    const results = calculateInvestmentResults(input);
+    console.log(results);
     return <p>Results...</p>;
 }
