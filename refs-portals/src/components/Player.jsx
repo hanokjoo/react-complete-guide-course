@@ -5,9 +5,8 @@ export default function Player() {
     const playerName = useRef();
 
     function handleClick() {
-        console.log(playerName.current.value);
         setEnteredPlayerName(playerName.current.value);
-        setSubmitted(true);
+        playerName.current.value = "";
     }
 
     return (
